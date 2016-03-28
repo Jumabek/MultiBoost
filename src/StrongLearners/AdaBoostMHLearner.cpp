@@ -69,6 +69,14 @@ namespace MultiBoost {
         else
             _shypFileName = string(SHYP_NAME);
 
+        ///////////////////////////////////////////////////  add by Jumabek for the purpose of feature selection
+        // get the selected feature index output file name, if given
+        if ( args.hasArgument("ffname") )
+            args.getValue("ffname", 0, _featureFileName);
+        else
+            _featureFileName = string("featureFile.txt");
+
+
         _shypFileName = nor_utils::addAndCheckExtension(_shypFileName, SHYP_EXTENSION);
 
         ///////////////////////////////////////////////////
@@ -218,7 +226,7 @@ namespace MultiBoost {
         int startingIteration = resumeWeakLearners(pTrainingData);
 
 
-        Serialization ss(_shypFileName, _isShypCompressed );
+        Serialization ss(_shypFileName, _featureFileName, _isShypCompressed );
         ss.writeHeader(_baseLearnerName); // this must go after resumeProcess has been called
 
         // perform the resuming if necessary. If not it will just return

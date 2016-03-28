@@ -339,7 +339,21 @@ namespace MultiBoost {
          * \date 13/11/2005
          */
         virtual void save(ofstream& outputStream, int numTabs = 0);
-                
+       
+
+        ///this function is add by Jumabek for the purpose of feature selection. 
+        /// I can not compile the source because it is giving error saying 
+        /*
+
+ no matching function for call to ‘MultiBoost::BaseLearner::save(std::ofstream&, std::ofstream&, int)’
+         pWeakHypothesis->save(_shypFile,_featureFile, 2 + numTab); 
+
+        */
+        //Hence I add following function 
+        void save(ofstream& outputStream, ofstream& featureStream, int numTabs = 0);
+         
+
+
         /**
          * Unserialize the object. This method will load the information
          * needed for the classification from the xml file loaded in a 

@@ -65,6 +65,7 @@ namespace MultiBoost {
     {
     public:
     BanditSingleSparseStump() : BanditSingleStumpLearner() {}
+        
 
         /**
          * The destructor. Must be declared (virtual) for the proper destruction of 

@@ -92,8 +92,12 @@ namespace MultiBoost {
          * The constructor.
          */
                 
-    BanditSingleStumpLearner() : SingleStumpLearner(), _banditAlgo( NULL ) {}
-                
+    BanditSingleStumpLearner() : SingleStumpLearner(), _banditAlgo( NULL ) {
+        cout<<"Constructor of BanditSingleStumpLearner is getting executed\n";
+        _featureOutputStream.open("data/VOC07/AlexNet/fc8/selected_features.txt");
+
+    }
+        void save(ofstream& outputStream, ofstream& featureStream, int numTabs);       
         /**
          * The destructor. Must be declared (virtual) for the proper destruction of 
          * the object.
@@ -239,7 +243,7 @@ namespace MultiBoost {
                 
         GenericBanditAlgorithm* _banditAlgo; //!< The pointer to the bandit object.
         BanditAlgo                              _banditAlgoName; //!< The name of the bandit algorithm.
-                
+        ofstream _featureOutputStream;        
         vector<AlphaReal>               _rewards;
         vector<int>                             _armsForPulling;
         AlphaReal                               _percentage; // for EXP3G

@@ -52,6 +52,23 @@ namespace MultiBoost {
         remove( _bzipFileName.c_str() );
     }
         
+    ///Jumabek add this for the purpose of feature selection
+ // -----------------------------------------------------------------------
+        
+    Serialization::Serialization(const string& shypFileName, const string& featureFileName, bool isComp )
+    { 
+        _featureFile.open(featureFileName.c_str());
+        _featureFileName = featureFileName;
+
+
+        _shypFile.open(shypFileName.c_str());
+        _shypFileName = shypFileName;
+        _isComp = isComp;
+        _bzipFileName = _shypFileName;
+        _bzipFileName.append( ".bz2" );
+        remove( _bzipFileName.c_str() );
+    }
+
     // -----------------------------------------------------------------------
         
     void Serialization::writeHeader(const string& weakLearnerName)
@@ -172,8 +189,9 @@ namespace MultiBoost {
         // open the hypothesis tag (parameters: iteration, weak learner's name)
         _shypFile << shiftTab << "\t<weakhyp iter=\"" << iteration << "\">" << endl;
                 
+        ///changed by Jumabek to include feautureFile
         // save the hypothesis
-        pWeakHypothesis->save(_shypFile, 2 + numTab); 
+        pWeakHypothesis->save(_shypFile,_featureFile, 2 + numTab); 
                 
         // close the hypothesis tag
         _shypFile << shiftTab << "\t</weakhyp>"<< endl;

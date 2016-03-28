@@ -442,6 +442,28 @@ namespace MultiBoost {
         //outputStream << Serialization::standardTag("columnIndex", _selectedColumn, numTabs) << endl;
     }
 
+
+
+//I am, Jumabek, overloading this function so that I can pass one more argument
+  // -----------------------------------------------------------------------
+
+    void BanditSingleStumpLearner::save(ofstream& outputStream, ofstream& featureStream, int numTabs)
+    {
+        // Calling the super-class method
+        FeaturewiseLearner::save(outputStream, numTabs);
+
+        //save selected features
+        featureStream<<_selectedColumn<<endl;        
+
+        // save selectedCoulumn
+        outputStream << Serialization::standardTag("threshold", _threshold, numTabs) << endl;
+                
+        outputStream << Serialization::vectorTag("rewards", _armsForPulling, _rewards, "arm", numTabs) << endl;
+        //outputStream << Serialization::standardTag("columnIndex", _selectedColumn, numTabs) << endl;
+    }
+
+
+
     // -----------------------------------------------------------------------
 
     void BanditSingleStumpLearner::load(nor_utils::StreamTokenizer& st)

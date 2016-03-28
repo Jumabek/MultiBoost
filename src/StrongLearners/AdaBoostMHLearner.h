@@ -208,6 +208,7 @@ namespace MultiBoost {
         
         string  _baseLearnerName; //!< The name of the basic learner used by AdaBoost. 
         string  _shypFileName; //!< File name of the strong hypothesis.
+        string  _featureFileName; //add by Jumabek for the purpose of feature selection
         bool       _isShypCompressed; 
         
         string  _trainFileName;

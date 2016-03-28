@@ -78,6 +78,7 @@ namespace MultiBoost {
          * \date 16/11/2005
          */
         Serialization(const string& shypFileName, bool isComp = false );
+        Serialization(const string& shypFileName, const string& featureFileName, bool isComp = false );
                 
         /**
          * Write the header.
@@ -182,6 +183,8 @@ namespace MultiBoost {
     private:
         ofstream _shypFile; //!< The strong learner file
         string  _shypFileName;
+        ofstream  _featureFile;
+        string  _featureFileName;
         string   _bzipFileName;
         bool            _isComp;
                 

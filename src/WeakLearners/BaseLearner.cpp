@@ -32,7 +32,7 @@
 
 
 #include <cmath> // for log and exp
-
+#include <iostream>
 #include "WeakLearners/BaseLearner.h"
 
 #include "StrongLearners/AdaBoostMHLearner.h"
@@ -47,7 +47,7 @@
 
 #include "IO/InputData.h"
 #include "IO/Serialization.h" // for the helper function "standardTag"
-
+using namespace std;
 namespace MultiBoost {
 
     // -----------------------------------------------------------------------------
@@ -209,6 +209,22 @@ namespace MultiBoost {
         // save alpha
         outputStream << Serialization::standardTag("alpha", _alpha, numTabs) << endl;
     }
+
+// -----------------------------------------------------------------------
+/// following function is added by Jumabek for the purpose of feature selection, please refer to header for more info.
+
+    void BaseLearner::save(ofstream& outputStream, ofstream& featureStream, int numTabs)
+    {
+        // save name
+    cout<<"Oh, man I wasn't supposed to be executed, trace me down to BaseLearner::save"<<endl;
+
+//        outputStream << Serialization::standardTag("weakLearner", _name, numTabs) << endl;
+
+        // save alpha
+  //      outputStream << Serialization::standardTag("alpha", _alpha, numTabs) << endl;
+    }
+
+
 
     // -----------------------------------------------------------------------
 
